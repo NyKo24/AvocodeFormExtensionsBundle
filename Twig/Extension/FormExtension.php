@@ -4,6 +4,8 @@ namespace Avocode\FormExtensionsBundle\Twig\Extension;
 
 use Symfony\Component\Form\FormView;
 use Symfony\Bridge\Twig\Form\TwigRendererInterface;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * FormExtension extends Twig with form capabilities.
@@ -31,8 +33,8 @@ class FormExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'afe_form_javascript' => new \Twig_Function_Method($this, 'renderJavascript', array('is_safe' => array('html'))),
-            'afe_form_stylesheet' => new \Twig_Function_Method($this, 'renderStylesheet', array('is_safe' => array('html'))),
+            'afe_form_javascript' => new TwigFunction('renderJavascript', $this, array('is_safe' => array('html'))),
+            'afe_form_stylesheet' => new TwigFunction('renderStylesheet', $this, array('is_safe' => array('html')))
         );
     }
 
@@ -42,7 +44,7 @@ class FormExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'e4js'  =>  new \Twig_Filter_Method($this, 'export_for_js'),
+            'e4js'  => new TwigFilter('export_for_js', $this),
         );
     }
 

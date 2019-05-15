@@ -135,4 +135,9 @@ class ImageAssetsExtension extends \Twig_Extension
     {
         return 'avocode.twig.extension.image_filter';
     }
+    
+    public function __invoke()
+    {
+        // TODO: Implement __invoke() method.
+    }
 }
